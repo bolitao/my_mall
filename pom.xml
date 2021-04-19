@@ -21,6 +21,7 @@
         <druid.starter.version>1.1.22</druid.starter.version>
         <mysql.connetcor.version>8.0.23</mysql.connetcor.version>
         <mybatis.generator.version>1.4.0</mybatis.generator.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
     <dependencies>
         <dependency>
@@ -79,24 +80,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>${mybatis.plus.codeGenerator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.31</version>
-        </dependency>
-
-        <!-- MyBatis 生成器 -->
-        <!--        <dependency>-->
-        <!--            <groupId>org.mybatis.generator</groupId>-->
-        <!--            <artifactId>mybatis-generator-core</artifactId>-->
-        <!--            <version>${mybatis.generator.version}</version>-->
-        <!--        </dependency>-->
-
-        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connetcor.version}</version>
@@ -111,7 +94,7 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.9.2</version>
+            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
 
