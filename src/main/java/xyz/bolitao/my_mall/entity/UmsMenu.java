@@ -1,51 +1,68 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 后台菜单表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMenu对象", description="后台菜单表")
-public class UmsMenu implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "父级ID")
+@TableName(value = "ums_menu")
+public class UmsMenu {
+    public static final String COL_ID = "id";
+    public static final String COL_PARENT_ID = "parent_id";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_TITLE = "title";
+    public static final String COL_LEVEL = "level";
+    public static final String COL_SORT = "sort";
+    public static final String COL_NAME = "name";
+    public static final String COL_ICON = "icon";
+    public static final String COL_HIDDEN = "hidden";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 父级ID
+     */
+    @TableField(value = "parent_id")
     private Long parentId;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "菜单名称")
+    /**
+     * 创建时间
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 菜单名称
+     */
+    @TableField(value = "title")
     private String title;
-
-    @ApiModelProperty(value = "菜单级数")
+    /**
+     * 菜单级数
+     */
+    @TableField(value = "`level`")
     private Integer level;
-
-    @ApiModelProperty(value = "菜单排序")
+    /**
+     * 菜单排序
+     */
+    @TableField(value = "sort")
     private Integer sort;
-
-    @ApiModelProperty(value = "前端名称")
+    /**
+     * 前端名称
+     */
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "前端图标")
+    /**
+     * 前端图标
+     */
+    @TableField(value = "icon")
     private String icon;
-
-    @ApiModelProperty(value = "前端隐藏")
+    /**
+     * 前端隐藏
+     */
+    @TableField(value = "hidden")
     private Integer hidden;
-
-
 }

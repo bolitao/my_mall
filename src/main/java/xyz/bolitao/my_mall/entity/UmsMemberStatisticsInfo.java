@@ -1,67 +1,93 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 会员统计信息
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberStatisticsInfo对象", description="会员统计信息")
-public class UmsMemberStatisticsInfo implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_member_statistics_info")
+public class UmsMemberStatisticsInfo {
+    public static final String COL_ID = "id";
+    public static final String COL_MEMBER_ID = "member_id";
+    public static final String COL_CONSUME_AMOUNT = "consume_amount";
+    public static final String COL_ORDER_COUNT = "order_count";
+    public static final String COL_COUPON_COUNT = "coupon_count";
+    public static final String COL_COMMENT_COUNT = "comment_count";
+    public static final String COL_RETURN_ORDER_COUNT = "return_order_count";
+    public static final String COL_LOGIN_COUNT = "login_count";
+    public static final String COL_ATTEND_COUNT = "attend_count";
+    public static final String COL_FANS_COUNT = "fans_count";
+    public static final String COL_COLLECT_PRODUCT_COUNT = "collect_product_count";
+    public static final String COL_COLLECT_SUBJECT_COUNT = "collect_subject_count";
+    public static final String COL_COLLECT_TOPIC_COUNT = "collect_topic_count";
+    public static final String COL_COLLECT_COMMENT_COUNT = "collect_comment_count";
+    public static final String COL_INVITE_FRIEND_COUNT = "invite_friend_count";
+    public static final String COL_RECENT_ORDER_TIME = "recent_order_time";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "member_id")
     private Long memberId;
-
-    @ApiModelProperty(value = "累计消费金额")
+    /**
+     * 累计消费金额
+     */
+    @TableField(value = "consume_amount")
     private BigDecimal consumeAmount;
-
-    @ApiModelProperty(value = "订单数量")
+    /**
+     * 订单数量
+     */
+    @TableField(value = "order_count")
     private Integer orderCount;
-
-    @ApiModelProperty(value = "优惠券数量")
+    /**
+     * 优惠券数量
+     */
+    @TableField(value = "coupon_count")
     private Integer couponCount;
-
-    @ApiModelProperty(value = "评价数")
+    /**
+     * 评价数
+     */
+    @TableField(value = "comment_count")
     private Integer commentCount;
-
-    @ApiModelProperty(value = "退货数量")
+    /**
+     * 退货数量
+     */
+    @TableField(value = "return_order_count")
     private Integer returnOrderCount;
-
-    @ApiModelProperty(value = "登录次数")
+    /**
+     * 登录次数
+     */
+    @TableField(value = "login_count")
     private Integer loginCount;
-
-    @ApiModelProperty(value = "关注数量")
+    /**
+     * 关注数量
+     */
+    @TableField(value = "attend_count")
     private Integer attendCount;
-
-    @ApiModelProperty(value = "粉丝数量")
+    /**
+     * 粉丝数量
+     */
+    @TableField(value = "fans_count")
     private Integer fansCount;
-
+    @TableField(value = "collect_product_count")
     private Integer collectProductCount;
-
+    @TableField(value = "collect_subject_count")
     private Integer collectSubjectCount;
-
+    @TableField(value = "collect_topic_count")
     private Integer collectTopicCount;
-
+    @TableField(value = "collect_comment_count")
     private Integer collectCommentCount;
-
+    @TableField(value = "invite_friend_count")
     private Integer inviteFriendCount;
-
-    @ApiModelProperty(value = "最后一次下订单时间")
-    private LocalDateTime recentOrderTime;
-
-
+    /**
+     * 最后一次下订单时间
+     */
+    @TableField(value = "recent_order_time")
+    private Date recentOrderTime;
 }

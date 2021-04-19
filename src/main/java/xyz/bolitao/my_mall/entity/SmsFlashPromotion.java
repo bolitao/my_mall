@@ -1,42 +1,47 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 限时购表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="SmsFlashPromotion对象", description="限时购表")
-public class SmsFlashPromotion implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "sms_flash_promotion")
+public class SmsFlashPromotion {
+    public static final String COL_ID = "id";
+    public static final String COL_TITLE = "title";
+    public static final String COL_START_DATE = "start_date";
+    public static final String COL_END_DATE = "end_date";
+    public static final String COL_STATUS = "status";
+    public static final String COL_CREATE_TIME = "create_time";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "title")
     private String title;
-
-    @ApiModelProperty(value = "开始日期")
-    private LocalDate startDate;
-
-    @ApiModelProperty(value = "结束日期")
-    private LocalDate endDate;
-
-    @ApiModelProperty(value = "上下线状态")
+    /**
+     * 开始日期
+     */
+    @TableField(value = "start_date")
+    private Date startDate;
+    /**
+     * 结束日期
+     */
+    @TableField(value = "end_date")
+    private Date endDate;
+    /**
+     * 上下线状态
+     */
+    @TableField(value = "`status`")
     private Integer status;
-
-    @ApiModelProperty(value = "秒杀时间段名称")
-    private LocalDateTime createTime;
-
-
+    /**
+     * 秒杀时间段名称
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
 }

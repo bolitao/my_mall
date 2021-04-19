@@ -1,39 +1,41 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 商品审核记录
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsProductVertifyRecord对象", description="商品审核记录")
-public class PmsProductVertifyRecord implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_product_vertify_record")
+public class PmsProductVertifyRecord {
+    public static final String COL_ID = "id";
+    public static final String COL_PRODUCT_ID = "product_id";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_VERTIFY_MAN = "vertify_man";
+    public static final String COL_STATUS = "status";
+    public static final String COL_DETAIL = "detail";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "product_id")
     private Long productId;
-
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "审核人")
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 审核人
+     */
+    @TableField(value = "vertify_man")
     private String vertifyMan;
-
+    @TableField(value = "`status`")
     private Integer status;
-
-    @ApiModelProperty(value = "反馈详情")
+    /**
+     * 反馈详情
+     */
+    @TableField(value = "detail")
     private String detail;
-
-
 }

@@ -1,29 +1,24 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 优选专区和产品关系表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="CmsPrefrenceAreaProductRelation对象", description="优选专区和产品关系表")
-public class CmsPrefrenceAreaProductRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "cms_prefrence_area_product_relation")
+public class CmsPrefrenceAreaProductRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_PREFRENCE_AREA_ID = "prefrence_area_id";
+    public static final String COL_PRODUCT_ID = "product_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "prefrence_area_id")
     private Long prefrenceAreaId;
-
+    @TableField(value = "product_id")
     private Long productId;
-
-
 }

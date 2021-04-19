@@ -1,44 +1,53 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 后台用户角色表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsRole对象", description="后台用户角色表")
-public class UmsRole implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "名称")
+@TableName(value = "ums_role")
+public class UmsRole {
+    public static final String COL_ID = "id";
+    public static final String COL_NAME = "name";
+    public static final String COL_DESCRIPTION = "description";
+    public static final String COL_ADMIN_COUNT = "admin_count";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_STATUS = "status";
+    public static final String COL_SORT = "sort";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 名称
+     */
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "描述")
+    /**
+     * 描述
+     */
+    @TableField(value = "description")
     private String description;
-
-    @ApiModelProperty(value = "后台用户数量")
+    /**
+     * 后台用户数量
+     */
+    @TableField(value = "admin_count")
     private Integer adminCount;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "启用状态：0->禁用；1->启用")
+    /**
+     * 创建时间
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 启用状态：0->禁用；1->启用
+     */
+    @TableField(value = "`status`")
     private Integer status;
-
+    @TableField(value = "sort")
     private Integer sort;
-
-
 }

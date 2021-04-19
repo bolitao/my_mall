@@ -1,53 +1,72 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 公司收发货地址表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="OmsCompanyAddress对象", description="公司收发货地址表")
-public class OmsCompanyAddress implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "地址名称")
+@TableName(value = "oms_company_address")
+public class OmsCompanyAddress {
+    public static final String COL_ID = "id";
+    public static final String COL_ADDRESS_NAME = "address_name";
+    public static final String COL_SEND_STATUS = "send_status";
+    public static final String COL_RECEIVE_STATUS = "receive_status";
+    public static final String COL_NAME = "name";
+    public static final String COL_PHONE = "phone";
+    public static final String COL_PROVINCE = "province";
+    public static final String COL_CITY = "city";
+    public static final String COL_REGION = "region";
+    public static final String COL_DETAIL_ADDRESS = "detail_address";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 地址名称
+     */
+    @TableField(value = "address_name")
     private String addressName;
-
-    @ApiModelProperty(value = "默认发货地址：0->否；1->是")
+    /**
+     * 默认发货地址：0->否；1->是
+     */
+    @TableField(value = "send_status")
     private Integer sendStatus;
-
-    @ApiModelProperty(value = "是否默认收货地址：0->否；1->是")
+    /**
+     * 是否默认收货地址：0->否；1->是
+     */
+    @TableField(value = "receive_status")
     private Integer receiveStatus;
-
-    @ApiModelProperty(value = "收发货人姓名")
+    /**
+     * 收发货人姓名
+     */
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "收货人电话")
+    /**
+     * 收货人电话
+     */
+    @TableField(value = "phone")
     private String phone;
-
-    @ApiModelProperty(value = "省/直辖市")
+    /**
+     * 省/直辖市
+     */
+    @TableField(value = "province")
     private String province;
-
-    @ApiModelProperty(value = "市")
+    /**
+     * 市
+     */
+    @TableField(value = "city")
     private String city;
-
-    @ApiModelProperty(value = "区")
+    /**
+     * 区
+     */
+    @TableField(value = "region")
     private String region;
-
-    @ApiModelProperty(value = "详细地址")
+    /**
+     * 详细地址
+     */
+    @TableField(value = "detail_address")
     private String detailAddress;
-
-
 }

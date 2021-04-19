@@ -1,29 +1,24 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 后台用户和角色关系表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsAdminRoleRelation对象", description="后台用户和角色关系表")
-public class UmsAdminRoleRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_admin_role_relation")
+public class UmsAdminRoleRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_ADMIN_ID = "admin_id";
+    public static final String COL_ROLE_ID = "role_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "admin_id")
     private Long adminId;
-
+    @TableField(value = "role_id")
     private Long roleId;
-
-
 }

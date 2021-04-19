@@ -1,37 +1,39 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 会员任务表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberTask对象", description="会员任务表")
-public class UmsMemberTask implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_member_task")
+public class UmsMemberTask {
+    public static final String COL_ID = "id";
+    public static final String COL_NAME = "name";
+    public static final String COL_GROWTH = "growth";
+    public static final String COL_INTERGRATION = "intergration";
+    public static final String COL_TYPE = "type";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "赠送成长值")
+    /**
+     * 赠送成长值
+     */
+    @TableField(value = "growth")
     private Integer growth;
-
-    @ApiModelProperty(value = "赠送积分")
+    /**
+     * 赠送积分
+     */
+    @TableField(value = "intergration")
     private Integer intergration;
-
-    @ApiModelProperty(value = "任务类型：0->新手任务；1->日常任务")
+    /**
+     * 任务类型：0->新手任务；1->日常任务
+     */
+    @TableField(value = "`type`")
     private Integer type;
-
-
 }

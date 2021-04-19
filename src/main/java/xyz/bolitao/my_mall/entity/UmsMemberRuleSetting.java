@@ -1,45 +1,56 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * <p>
  * 会员积分成长规则表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberRuleSetting对象", description="会员积分成长规则表")
-public class UmsMemberRuleSetting implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "连续签到天数")
+@TableName(value = "ums_member_rule_setting")
+public class UmsMemberRuleSetting {
+    public static final String COL_ID = "id";
+    public static final String COL_CONTINUE_SIGN_DAY = "continue_sign_day";
+    public static final String COL_CONTINUE_SIGN_POINT = "continue_sign_point";
+    public static final String COL_CONSUME_PER_POINT = "consume_per_point";
+    public static final String COL_LOW_ORDER_AMOUNT = "low_order_amount";
+    public static final String COL_MAX_POINT_PER_ORDER = "max_point_per_order";
+    public static final String COL_TYPE = "type";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 连续签到天数
+     */
+    @TableField(value = "continue_sign_day")
     private Integer continueSignDay;
-
-    @ApiModelProperty(value = "连续签到赠送数量")
+    /**
+     * 连续签到赠送数量
+     */
+    @TableField(value = "continue_sign_point")
     private Integer continueSignPoint;
-
-    @ApiModelProperty(value = "每消费多少元获取1个点")
+    /**
+     * 每消费多少元获取1个点
+     */
+    @TableField(value = "consume_per_point")
     private BigDecimal consumePerPoint;
-
-    @ApiModelProperty(value = "最低获取点数的订单金额")
+    /**
+     * 最低获取点数的订单金额
+     */
+    @TableField(value = "low_order_amount")
     private BigDecimal lowOrderAmount;
-
-    @ApiModelProperty(value = "每笔订单最高获取点数")
+    /**
+     * 每笔订单最高获取点数
+     */
+    @TableField(value = "max_point_per_order")
     private Integer maxPointPerOrder;
-
-    @ApiModelProperty(value = "类型：0->积分规则；1->成长值规则")
+    /**
+     * 类型：0->积分规则；1->成长值规则
+     */
+    @TableField(value = "`type`")
     private Integer type;
-
-
 }

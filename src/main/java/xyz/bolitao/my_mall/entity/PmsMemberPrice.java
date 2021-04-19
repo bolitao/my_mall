@@ -1,36 +1,35 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * <p>
  * 商品会员价格表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsMemberPrice对象", description="商品会员价格表")
-public class PmsMemberPrice implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_member_price")
+public class PmsMemberPrice {
+    public static final String COL_ID = "id";
+    public static final String COL_PRODUCT_ID = "product_id";
+    public static final String COL_MEMBER_LEVEL_ID = "member_level_id";
+    public static final String COL_MEMBER_PRICE = "member_price";
+    public static final String COL_MEMBER_LEVEL_NAME = "member_level_name";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "product_id")
     private Long productId;
-
+    @TableField(value = "member_level_id")
     private Long memberLevelId;
-
-    @ApiModelProperty(value = "会员价格")
+    /**
+     * 会员价格
+     */
+    @TableField(value = "member_price")
     private BigDecimal memberPrice;
-
+    @TableField(value = "member_level_name")
     private String memberLevelName;
-
-
 }

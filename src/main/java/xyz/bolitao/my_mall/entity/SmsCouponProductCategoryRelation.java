@@ -1,36 +1,36 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 优惠券和产品分类关系表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="SmsCouponProductCategoryRelation对象", description="优惠券和产品分类关系表")
-public class SmsCouponProductCategoryRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "sms_coupon_product_category_relation")
+public class SmsCouponProductCategoryRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_COUPON_ID = "coupon_id";
+    public static final String COL_PRODUCT_CATEGORY_ID = "product_category_id";
+    public static final String COL_PRODUCT_CATEGORY_NAME = "product_category_name";
+    public static final String COL_PARENT_CATEGORY_NAME = "parent_category_name";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "coupon_id")
     private Long couponId;
-
+    @TableField(value = "product_category_id")
     private Long productCategoryId;
-
-    @ApiModelProperty(value = "产品分类名称")
+    /**
+     * 产品分类名称
+     */
+    @TableField(value = "product_category_name")
     private String productCategoryName;
-
-    @ApiModelProperty(value = "父分类名称")
+    /**
+     * 父分类名称
+     */
+    @TableField(value = "parent_category_name")
     private String parentCategoryName;
-
-
 }

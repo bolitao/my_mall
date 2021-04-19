@@ -1,76 +1,114 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 优惠券表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="SmsCoupon对象", description="优惠券表")
-public class SmsCoupon implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "优惠券类型；0->全场赠券；1->会员赠券；2->购物赠券；3->注册赠券")
+@TableName(value = "sms_coupon")
+public class SmsCoupon {
+    public static final String COL_ID = "id";
+    public static final String COL_TYPE = "type";
+    public static final String COL_NAME = "name";
+    public static final String COL_PLATFORM = "platform";
+    public static final String COL_COUNT = "count";
+    public static final String COL_AMOUNT = "amount";
+    public static final String COL_PER_LIMIT = "per_limit";
+    public static final String COL_MIN_POINT = "min_point";
+    public static final String COL_START_TIME = "start_time";
+    public static final String COL_END_TIME = "end_time";
+    public static final String COL_USE_TYPE = "use_type";
+    public static final String COL_NOTE = "note";
+    public static final String COL_PUBLISH_COUNT = "publish_count";
+    public static final String COL_USE_COUNT = "use_count";
+    public static final String COL_RECEIVE_COUNT = "receive_count";
+    public static final String COL_ENABLE_TIME = "enable_time";
+    public static final String COL_CODE = "code";
+    public static final String COL_MEMBER_LEVEL = "member_level";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 优惠券类型；0->全场赠券；1->会员赠券；2->购物赠券；3->注册赠券
+     */
+    @TableField(value = "`type`")
     private Integer type;
-
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "使用平台：0->全部；1->移动；2->PC")
+    /**
+     * 使用平台：0->全部；1->移动；2->PC
+     */
+    @TableField(value = "platform")
     private Integer platform;
-
-    @ApiModelProperty(value = "数量")
+    /**
+     * 数量
+     */
+    @TableField(value = "`count`")
     private Integer count;
-
-    @ApiModelProperty(value = "金额")
+    /**
+     * 金额
+     */
+    @TableField(value = "amount")
     private BigDecimal amount;
-
-    @ApiModelProperty(value = "每人限领张数")
+    /**
+     * 每人限领张数
+     */
+    @TableField(value = "per_limit")
     private Integer perLimit;
-
-    @ApiModelProperty(value = "使用门槛；0表示无门槛")
+    /**
+     * 使用门槛；0表示无门槛
+     */
+    @TableField(value = "min_point")
     private BigDecimal minPoint;
-
-    private LocalDateTime startTime;
-
-    private LocalDateTime endTime;
-
-    @ApiModelProperty(value = "使用类型：0->全场通用；1->指定分类；2->指定商品")
+    @TableField(value = "start_time")
+    private Date startTime;
+    @TableField(value = "end_time")
+    private Date endTime;
+    /**
+     * 使用类型：0->全场通用；1->指定分类；2->指定商品
+     */
+    @TableField(value = "use_type")
     private Integer useType;
-
-    @ApiModelProperty(value = "备注")
+    /**
+     * 备注
+     */
+    @TableField(value = "note")
     private String note;
-
-    @ApiModelProperty(value = "发行数量")
+    /**
+     * 发行数量
+     */
+    @TableField(value = "publish_count")
     private Integer publishCount;
-
-    @ApiModelProperty(value = "已使用数量")
+    /**
+     * 已使用数量
+     */
+    @TableField(value = "use_count")
     private Integer useCount;
-
-    @ApiModelProperty(value = "领取数量")
+    /**
+     * 领取数量
+     */
+    @TableField(value = "receive_count")
     private Integer receiveCount;
-
-    @ApiModelProperty(value = "可以领取的日期")
-    private LocalDateTime enableTime;
-
-    @ApiModelProperty(value = "优惠码")
+    /**
+     * 可以领取的日期
+     */
+    @TableField(value = "enable_time")
+    private Date enableTime;
+    /**
+     * 优惠码
+     */
+    @TableField(value = "code")
     private String code;
-
-    @ApiModelProperty(value = "可领取的会员类型：0->无限时")
+    /**
+     * 可领取的会员类型：0->无限时
+     */
+    @TableField(value = "member_level")
     private Integer memberLevel;
-
-
 }

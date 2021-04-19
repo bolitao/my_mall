@@ -1,16 +1,12 @@
 package xyz.bolitao.my_mall.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import xyz.bolitao.my_mall.entity.PmsBrand;
 
 /**
- * <p>
- * 品牌表 Mapper 接口
- * </p>
- *
  * @author bolitao
- * @since 2021-04-19
  */
+@Mapper
 public interface PmsBrandMapper extends BaseMapper<PmsBrand> {
-
 }

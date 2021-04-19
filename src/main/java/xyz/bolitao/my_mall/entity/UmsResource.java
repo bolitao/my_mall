@@ -1,42 +1,50 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 后台资源表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsResource对象", description="后台资源表")
-public class UmsResource implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "资源名称")
+@TableName(value = "ums_resource")
+public class UmsResource {
+    public static final String COL_ID = "id";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_NAME = "name";
+    public static final String COL_URL = "url";
+    public static final String COL_DESCRIPTION = "description";
+    public static final String COL_CATEGORY_ID = "category_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 创建时间
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 资源名称
+     */
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "资源URL")
+    /**
+     * 资源URL
+     */
+    @TableField(value = "url")
     private String url;
-
-    @ApiModelProperty(value = "描述")
+    /**
+     * 描述
+     */
+    @TableField(value = "description")
     private String description;
-
-    @ApiModelProperty(value = "资源分类ID")
+    /**
+     * 资源分类ID
+     */
+    @TableField(value = "category_id")
     private Long categoryId;
-
-
 }

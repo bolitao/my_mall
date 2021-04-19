@@ -1,29 +1,24 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 专题商品关系表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="CmsSubjectProductRelation对象", description="专题商品关系表")
-public class CmsSubjectProductRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "cms_subject_product_relation")
+public class CmsSubjectProductRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_SUBJECT_ID = "subject_id";
+    public static final String COL_PRODUCT_ID = "product_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "subject_id")
     private Long subjectId;
-
+    @TableField(value = "product_id")
     private Long productId;
-
-
 }

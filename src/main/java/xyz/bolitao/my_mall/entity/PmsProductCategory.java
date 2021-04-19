@@ -1,54 +1,69 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 产品分类
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsProductCategory对象", description="产品分类")
-public class PmsProductCategory implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "上机分类的编号：0表示一级分类")
+@TableName(value = "pms_product_category")
+public class PmsProductCategory {
+    public static final String COL_ID = "id";
+    public static final String COL_PARENT_ID = "parent_id";
+    public static final String COL_NAME = "name";
+    public static final String COL_LEVEL = "level";
+    public static final String COL_PRODUCT_COUNT = "product_count";
+    public static final String COL_PRODUCT_UNIT = "product_unit";
+    public static final String COL_NAV_STATUS = "nav_status";
+    public static final String COL_SHOW_STATUS = "show_status";
+    public static final String COL_SORT = "sort";
+    public static final String COL_ICON = "icon";
+    public static final String COL_KEYWORDS = "keywords";
+    public static final String COL_DESCRIPTION = "description";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 上机分类的编号：0表示一级分类
+     */
+    @TableField(value = "parent_id")
     private Long parentId;
-
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "分类级别：0->1级；1->2级")
+    /**
+     * 分类级别：0->1级；1->2级
+     */
+    @TableField(value = "`level`")
     private Integer level;
-
+    @TableField(value = "product_count")
     private Integer productCount;
-
+    @TableField(value = "product_unit")
     private String productUnit;
-
-    @ApiModelProperty(value = "是否显示在导航栏：0->不显示；1->显示")
+    /**
+     * 是否显示在导航栏：0->不显示；1->显示
+     */
+    @TableField(value = "nav_status")
     private Integer navStatus;
-
-    @ApiModelProperty(value = "显示状态：0->不显示；1->显示")
+    /**
+     * 显示状态：0->不显示；1->显示
+     */
+    @TableField(value = "show_status")
     private Integer showStatus;
-
+    @TableField(value = "sort")
     private Integer sort;
-
-    @ApiModelProperty(value = "图标")
+    /**
+     * 图标
+     */
+    @TableField(value = "icon")
     private String icon;
-
+    @TableField(value = "keywords")
     private String keywords;
-
-    @ApiModelProperty(value = "描述")
+    /**
+     * 描述
+     */
+    @TableField(value = "description")
     private String description;
-
-
 }

@@ -1,40 +1,41 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 产品评价回复表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsCommentReplay对象", description="产品评价回复表")
-public class PmsCommentReplay implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_comment_replay")
+public class PmsCommentReplay {
+    public static final String COL_ID = "id";
+    public static final String COL_COMMENT_ID = "comment_id";
+    public static final String COL_MEMBER_NICK_NAME = "member_nick_name";
+    public static final String COL_MEMBER_ICON = "member_icon";
+    public static final String COL_CONTENT = "content";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_TYPE = "type";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "comment_id")
     private Long commentId;
-
+    @TableField(value = "member_nick_name")
     private String memberNickName;
-
+    @TableField(value = "member_icon")
     private String memberIcon;
-
+    @TableField(value = "content")
     private String content;
-
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "评论人员类型；0->会员；1->管理员")
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 评论人员类型；0->会员；1->管理员
+     */
+    @TableField(value = "`type`")
     private Integer type;
-
-
 }

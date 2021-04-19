@@ -1,35 +1,35 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * <p>
  * 用户标签表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberTag对象", description="用户标签表")
-public class UmsMemberTag implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_member_tag")
+public class UmsMemberTag {
+    public static final String COL_ID = "id";
+    public static final String COL_NAME = "name";
+    public static final String COL_FINISH_ORDER_COUNT = "finish_order_count";
+    public static final String COL_FINISH_ORDER_AMOUNT = "finish_order_amount";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "自动打标签完成订单数量")
+    /**
+     * 自动打标签完成订单数量
+     */
+    @TableField(value = "finish_order_count")
     private Integer finishOrderCount;
-
-    @ApiModelProperty(value = "自动打标签完成订单金额")
+    /**
+     * 自动打标签完成订单金额
+     */
+    @TableField(value = "finish_order_amount")
     private BigDecimal finishOrderAmount;
-
-
 }

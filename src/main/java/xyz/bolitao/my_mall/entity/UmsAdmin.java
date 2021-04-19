@@ -1,52 +1,68 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 后台用户表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsAdmin对象", description="后台用户表")
-public class UmsAdmin implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_admin")
+public class UmsAdmin {
+    public static final String COL_ID = "id";
+    public static final String COL_USERNAME = "username";
+    public static final String COL_PASSWORD = "password";
+    public static final String COL_ICON = "icon";
+    public static final String COL_EMAIL = "email";
+    public static final String COL_NICK_NAME = "nick_name";
+    public static final String COL_NOTE = "note";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_LOGIN_TIME = "login_time";
+    public static final String COL_STATUS = "status";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "username")
     private String username;
-
+    @TableField(value = "`password`")
     private String password;
-
-    @ApiModelProperty(value = "头像")
+    /**
+     * 头像
+     */
+    @TableField(value = "icon")
     private String icon;
-
-    @ApiModelProperty(value = "邮箱")
+    /**
+     * 邮箱
+     */
+    @TableField(value = "email")
     private String email;
-
-    @ApiModelProperty(value = "昵称")
+    /**
+     * 昵称
+     */
+    @TableField(value = "nick_name")
     private String nickName;
-
-    @ApiModelProperty(value = "备注信息")
+    /**
+     * 备注信息
+     */
+    @TableField(value = "note")
     private String note;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "最后登录时间")
-    private LocalDateTime loginTime;
-
-    @ApiModelProperty(value = "帐号启用状态：0->禁用；1->启用")
+    /**
+     * 创建时间
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 最后登录时间
+     */
+    @TableField(value = "login_time")
+    private Date loginTime;
+    /**
+     * 帐号启用状态：0->禁用；1->启用
+     */
+    @TableField(value = "`status`")
     private Integer status;
-
-
 }

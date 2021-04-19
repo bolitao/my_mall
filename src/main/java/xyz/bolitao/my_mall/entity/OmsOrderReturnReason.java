@@ -1,38 +1,41 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 退货原因表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="OmsOrderReturnReason对象", description="退货原因表")
-public class OmsOrderReturnReason implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "退货类型")
+@TableName(value = "oms_order_return_reason")
+public class OmsOrderReturnReason {
+    public static final String COL_ID = "id";
+    public static final String COL_NAME = "name";
+    public static final String COL_SORT = "sort";
+    public static final String COL_STATUS = "status";
+    public static final String COL_CREATE_TIME = "create_time";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 退货类型
+     */
+    @TableField(value = "`name`")
     private String name;
-
+    @TableField(value = "sort")
     private Integer sort;
-
-    @ApiModelProperty(value = "状态：0->不启用；1->启用")
+    /**
+     * 状态：0->不启用；1->启用
+     */
+    @TableField(value = "`status`")
     private Integer status;
-
-    @ApiModelProperty(value = "添加时间")
-    private LocalDateTime createTime;
-
-
+    /**
+     * 添加时间
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
 }

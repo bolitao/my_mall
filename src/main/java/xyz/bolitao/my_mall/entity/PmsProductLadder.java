@@ -1,38 +1,41 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * <p>
  * 产品阶梯价格表(只针对同商品)
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsProductLadder对象", description="产品阶梯价格表(只针对同商品)")
-public class PmsProductLadder implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_product_ladder")
+public class PmsProductLadder {
+    public static final String COL_ID = "id";
+    public static final String COL_PRODUCT_ID = "product_id";
+    public static final String COL_COUNT = "count";
+    public static final String COL_DISCOUNT = "discount";
+    public static final String COL_PRICE = "price";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "product_id")
     private Long productId;
-
-    @ApiModelProperty(value = "满足的商品数量")
+    /**
+     * 满足的商品数量
+     */
+    @TableField(value = "`count`")
     private Integer count;
-
-    @ApiModelProperty(value = "折扣")
+    /**
+     * 折扣
+     */
+    @TableField(value = "discount")
     private BigDecimal discount;
-
-    @ApiModelProperty(value = "折后价格")
+    /**
+     * 折后价格
+     */
+    @TableField(value = "price")
     private BigDecimal price;
-
-
 }

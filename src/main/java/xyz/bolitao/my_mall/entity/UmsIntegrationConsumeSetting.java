@@ -1,38 +1,42 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 积分消费设置
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsIntegrationConsumeSetting对象", description="积分消费设置")
-public class UmsIntegrationConsumeSetting implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "每一元需要抵扣的积分数量")
+@TableName(value = "ums_integration_consume_setting")
+public class UmsIntegrationConsumeSetting {
+    public static final String COL_ID = "id";
+    public static final String COL_DEDUCTION_PER_AMOUNT = "deduction_per_amount";
+    public static final String COL_MAX_PERCENT_PER_ORDER = "max_percent_per_order";
+    public static final String COL_USE_UNIT = "use_unit";
+    public static final String COL_COUPON_STATUS = "coupon_status";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 每一元需要抵扣的积分数量
+     */
+    @TableField(value = "deduction_per_amount")
     private Integer deductionPerAmount;
-
-    @ApiModelProperty(value = "每笔订单最高抵用百分比")
+    /**
+     * 每笔订单最高抵用百分比
+     */
+    @TableField(value = "max_percent_per_order")
     private Integer maxPercentPerOrder;
-
-    @ApiModelProperty(value = "每次使用积分最小单位100")
+    /**
+     * 每次使用积分最小单位100
+     */
+    @TableField(value = "use_unit")
     private Integer useUnit;
-
-    @ApiModelProperty(value = "是否可以和优惠券同用；0->不可以；1->可以")
+    /**
+     * 是否可以和优惠券同用；0->不可以；1->可以
+     */
+    @TableField(value = "coupon_status")
     private Integer couponStatus;
-
-
 }

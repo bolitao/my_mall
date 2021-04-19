@@ -1,46 +1,56 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 成长值变化历史记录表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsGrowthChangeHistory对象", description="成长值变化历史记录表")
-public class UmsGrowthChangeHistory implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_growth_change_history")
+public class UmsGrowthChangeHistory {
+    public static final String COL_ID = "id";
+    public static final String COL_MEMBER_ID = "member_id";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_CHANGE_TYPE = "change_type";
+    public static final String COL_CHANGE_COUNT = "change_count";
+    public static final String COL_OPERATE_MAN = "operate_man";
+    public static final String COL_OPERATE_NOTE = "operate_note";
+    public static final String COL_SOURCE_TYPE = "source_type";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "member_id")
     private Long memberId;
-
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "改变类型：0->增加；1->减少")
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 改变类型：0->增加；1->减少
+     */
+    @TableField(value = "change_type")
     private Integer changeType;
-
-    @ApiModelProperty(value = "积分改变数量")
+    /**
+     * 积分改变数量
+     */
+    @TableField(value = "change_count")
     private Integer changeCount;
-
-    @ApiModelProperty(value = "操作人员")
+    /**
+     * 操作人员
+     */
+    @TableField(value = "operate_man")
     private String operateMan;
-
-    @ApiModelProperty(value = "操作备注")
+    /**
+     * 操作备注
+     */
+    @TableField(value = "operate_note")
     private String operateNote;
-
-    @ApiModelProperty(value = "积分来源：0->购物；1->管理员修改")
+    /**
+     * 积分来源：0->购物；1->管理员修改
+     */
+    @TableField(value = "source_type")
     private Integer sourceType;
-
-
 }

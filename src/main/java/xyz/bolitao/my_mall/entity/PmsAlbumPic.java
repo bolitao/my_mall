@@ -1,29 +1,24 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 画册图片表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsAlbumPic对象", description="画册图片表")
-public class PmsAlbumPic implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_album_pic")
+public class PmsAlbumPic {
+    public static final String COL_ID = "id";
+    public static final String COL_ALBUM_ID = "album_id";
+    public static final String COL_PIC = "pic";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "album_id")
     private Long albumId;
-
+    @TableField(value = "pic")
     private String pic;
-
-
 }

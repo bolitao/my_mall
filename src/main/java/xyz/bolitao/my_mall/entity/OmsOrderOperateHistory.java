@@ -1,42 +1,50 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 订单操作历史记录
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="OmsOrderOperateHistory对象", description="订单操作历史记录")
-public class OmsOrderOperateHistory implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "订单id")
+@TableName(value = "oms_order_operate_history")
+public class OmsOrderOperateHistory {
+    public static final String COL_ID = "id";
+    public static final String COL_ORDER_ID = "order_id";
+    public static final String COL_OPERATE_MAN = "operate_man";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_ORDER_STATUS = "order_status";
+    public static final String COL_NOTE = "note";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 订单id
+     */
+    @TableField(value = "order_id")
     private Long orderId;
-
-    @ApiModelProperty(value = "操作人：用户；系统；后台管理员")
+    /**
+     * 操作人：用户；系统；后台管理员
+     */
+    @TableField(value = "operate_man")
     private String operateMan;
-
-    @ApiModelProperty(value = "操作时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单")
+    /**
+     * 操作时间
+     */
+    @TableField(value = "create_time")
+    private Date createTime;
+    /**
+     * 订单状态：0->待付款；1->待发货；2->已发货；3->已完成；4->已关闭；5->无效订单
+     */
+    @TableField(value = "order_status")
     private Integer orderStatus;
-
-    @ApiModelProperty(value = "备注")
+    /**
+     * 备注
+     */
+    @TableField(value = "note")
     private String note;
-
-
 }

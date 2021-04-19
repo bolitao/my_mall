@@ -1,45 +1,53 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * <p>
  * 运费模版
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsFeightTemplate对象", description="运费模版")
-public class PmsFeightTemplate implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_feight_template")
+public class PmsFeightTemplate {
+    public static final String COL_ID = "id";
+    public static final String COL_NAME = "name";
+    public static final String COL_CHARGE_TYPE = "charge_type";
+    public static final String COL_FIRST_WEIGHT = "first_weight";
+    public static final String COL_FIRST_FEE = "first_fee";
+    public static final String COL_CONTINUE_WEIGHT = "continue_weight";
+    public static final String COL_CONTINME_FEE = "continme_fee";
+    public static final String COL_DEST = "dest";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "`name`")
     private String name;
-
-    @ApiModelProperty(value = "计费类型:0->按重量；1->按件数")
+    /**
+     * 计费类型:0->按重量；1->按件数
+     */
+    @TableField(value = "charge_type")
     private Integer chargeType;
-
-    @ApiModelProperty(value = "首重kg")
+    /**
+     * 首重kg
+     */
+    @TableField(value = "first_weight")
     private BigDecimal firstWeight;
-
-    @ApiModelProperty(value = "首费（元）")
+    /**
+     * 首费（元）
+     */
+    @TableField(value = "first_fee")
     private BigDecimal firstFee;
-
+    @TableField(value = "continue_weight")
     private BigDecimal continueWeight;
-
+    @TableField(value = "continme_fee")
     private BigDecimal continmeFee;
-
-    @ApiModelProperty(value = "目的地（省、市）")
+    /**
+     * 目的地（省、市）
+     */
+    @TableField(value = "dest")
     private String dest;
-
-
 }

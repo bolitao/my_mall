@@ -1,38 +1,38 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 后台用户登录日志表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsAdminLoginLog对象", description="后台用户登录日志表")
-public class UmsAdminLoginLog implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_admin_login_log")
+public class UmsAdminLoginLog {
+    public static final String COL_ID = "id";
+    public static final String COL_ADMIN_ID = "admin_id";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_IP = "ip";
+    public static final String COL_ADDRESS = "address";
+    public static final String COL_USER_AGENT = "user_agent";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "admin_id")
     private Long adminId;
-
-    private LocalDateTime createTime;
-
+    @TableField(value = "create_time")
+    private Date createTime;
+    @TableField(value = "ip")
     private String ip;
-
+    @TableField(value = "address")
     private String address;
-
-    @ApiModelProperty(value = "浏览器登录类型")
+    /**
+     * 浏览器登录类型
+     */
+    @TableField(value = "user_agent")
     private String userAgent;
-
-
 }

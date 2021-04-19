@@ -1,40 +1,41 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 会员登录记录
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberLoginLog对象", description="会员登录记录")
-public class UmsMemberLoginLog implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_member_login_log")
+public class UmsMemberLoginLog {
+    public static final String COL_ID = "id";
+    public static final String COL_MEMBER_ID = "member_id";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_IP = "ip";
+    public static final String COL_CITY = "city";
+    public static final String COL_LOGIN_TYPE = "login_type";
+    public static final String COL_PROVINCE = "province";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "member_id")
     private Long memberId;
-
-    private LocalDateTime createTime;
-
+    @TableField(value = "create_time")
+    private Date createTime;
+    @TableField(value = "ip")
     private String ip;
-
+    @TableField(value = "city")
     private String city;
-
-    @ApiModelProperty(value = "登录类型：0->PC；1->android;2->ios;3->小程序")
+    /**
+     * 登录类型：0->PC；1->android;2->ios;3->小程序
+     */
+    @TableField(value = "login_type")
     private Integer loginType;
-
+    @TableField(value = "province")
     private String province;
-
-
 }

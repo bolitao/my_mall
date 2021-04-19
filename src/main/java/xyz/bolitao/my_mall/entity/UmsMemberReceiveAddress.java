@@ -1,51 +1,66 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 会员收货地址表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberReceiveAddress对象", description="会员收货地址表")
-public class UmsMemberReceiveAddress implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_member_receive_address")
+public class UmsMemberReceiveAddress {
+    public static final String COL_ID = "id";
+    public static final String COL_MEMBER_ID = "member_id";
+    public static final String COL_NAME = "name";
+    public static final String COL_PHONE_NUMBER = "phone_number";
+    public static final String COL_DEFAULT_STATUS = "default_status";
+    public static final String COL_POST_CODE = "post_code";
+    public static final String COL_PROVINCE = "province";
+    public static final String COL_CITY = "city";
+    public static final String COL_REGION = "region";
+    public static final String COL_DETAIL_ADDRESS = "detail_address";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "member_id")
     private Long memberId;
-
-    @ApiModelProperty(value = "收货人名称")
+    /**
+     * 收货人名称
+     */
+    @TableField(value = "`name`")
     private String name;
-
+    @TableField(value = "phone_number")
     private String phoneNumber;
-
-    @ApiModelProperty(value = "是否为默认")
+    /**
+     * 是否为默认
+     */
+    @TableField(value = "default_status")
     private Integer defaultStatus;
-
-    @ApiModelProperty(value = "邮政编码")
+    /**
+     * 邮政编码
+     */
+    @TableField(value = "post_code")
     private String postCode;
-
-    @ApiModelProperty(value = "省份/直辖市")
+    /**
+     * 省份/直辖市
+     */
+    @TableField(value = "province")
     private String province;
-
-    @ApiModelProperty(value = "城市")
+    /**
+     * 城市
+     */
+    @TableField(value = "city")
     private String city;
-
-    @ApiModelProperty(value = "区")
+    /**
+     * 区
+     */
+    @TableField(value = "region")
     private String region;
-
-    @ApiModelProperty(value = "详细地址(街道)")
+    /**
+     * 详细地址(街道)
+     */
+    @TableField(value = "detail_address")
     private String detailAddress;
-
-
 }

@@ -1,29 +1,24 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 产品的分类和属性的关系表，用于设置分类筛选条件（只支持一级分类）
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="PmsProductCategoryAttributeRelation对象", description="产品的分类和属性的关系表，用于设置分类筛选条件（只支持一级分类）")
-public class PmsProductCategoryAttributeRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "pms_product_category_attribute_relation")
+public class PmsProductCategoryAttributeRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_PRODUCT_CATEGORY_ID = "product_category_id";
+    public static final String COL_PRODUCT_ATTRIBUTE_ID = "product_attribute_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "product_category_id")
     private Long productCategoryId;
-
+    @TableField(value = "product_attribute_id")
     private Long productAttributeId;
-
-
 }

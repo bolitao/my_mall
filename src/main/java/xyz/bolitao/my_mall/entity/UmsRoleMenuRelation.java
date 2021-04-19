@@ -1,32 +1,30 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 后台角色菜单关系表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsRoleMenuRelation对象", description="后台角色菜单关系表")
-public class UmsRoleMenuRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "角色ID")
+@TableName(value = "ums_role_menu_relation")
+public class UmsRoleMenuRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_ROLE_ID = "role_id";
+    public static final String COL_MENU_ID = "menu_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    /**
+     * 角色ID
+     */
+    @TableField(value = "role_id")
     private Long roleId;
-
-    @ApiModelProperty(value = "菜单ID")
+    /**
+     * 菜单ID
+     */
+    @TableField(value = "menu_id")
     private Long menuId;
-
-
 }

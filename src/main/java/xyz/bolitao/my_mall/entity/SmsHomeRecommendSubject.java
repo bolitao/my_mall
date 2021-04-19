@@ -1,33 +1,30 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 首页推荐专题表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="SmsHomeRecommendSubject对象", description="首页推荐专题表")
-public class SmsHomeRecommendSubject implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "sms_home_recommend_subject")
+public class SmsHomeRecommendSubject {
+    public static final String COL_ID = "id";
+    public static final String COL_SUBJECT_ID = "subject_id";
+    public static final String COL_SUBJECT_NAME = "subject_name";
+    public static final String COL_RECOMMEND_STATUS = "recommend_status";
+    public static final String COL_SORT = "sort";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "subject_id")
     private Long subjectId;
-
+    @TableField(value = "subject_name")
     private String subjectName;
-
+    @TableField(value = "recommend_status")
     private Integer recommendStatus;
-
+    @TableField(value = "sort")
     private Integer sort;
-
-
 }

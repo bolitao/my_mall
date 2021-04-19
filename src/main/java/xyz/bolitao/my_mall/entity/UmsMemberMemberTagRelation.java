@@ -1,29 +1,24 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import java.io.Serializable;
 
 /**
- * <p>
  * 用户和标签关系表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="UmsMemberMemberTagRelation对象", description="用户和标签关系表")
-public class UmsMemberMemberTagRelation implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+@TableName(value = "ums_member_member_tag_relation")
+public class UmsMemberMemberTagRelation {
+    public static final String COL_ID = "id";
+    public static final String COL_MEMBER_ID = "member_id";
+    public static final String COL_TAG_ID = "tag_id";
+    @TableId(value = "id", type = IdType.INPUT)
+    private Long id;
+    @TableField(value = "member_id")
     private Long memberId;
-
+    @TableField(value = "tag_id")
     private Long tagId;
-
-
 }

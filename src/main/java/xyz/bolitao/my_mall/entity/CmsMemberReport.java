@@ -1,45 +1,52 @@
 package xyz.bolitao.my_mall.entity;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
- * <p>
  * 用户举报表
- * </p>
- *
- * @author bolitao
- * @since 2021-04-19
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="CmsMemberReport对象", description="用户举报表")
-public class CmsMemberReport implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "举报类型：0->商品评价；1->话题内容；2->用户评论")
+@TableName(value = "cms_member_report")
+public class CmsMemberReport {
+    public static final String COL_ID = "id";
+    public static final String COL_REPORT_TYPE = "report_type";
+    public static final String COL_REPORT_MEMBER_NAME = "report_member_name";
+    public static final String COL_CREATE_TIME = "create_time";
+    public static final String COL_REPORT_OBJECT = "report_object";
+    public static final String COL_REPORT_STATUS = "report_status";
+    public static final String COL_HANDLE_STATUS = "handle_status";
+    public static final String COL_NOTE = "note";
+    @TableId(value = "id")
+    private Long id;
+    /**
+     * 举报类型：0->商品评价；1->话题内容；2->用户评论
+     */
+    @TableField(value = "report_type")
     private Integer reportType;
-
-    @ApiModelProperty(value = "举报人")
+    /**
+     * 举报人
+     */
+    @TableField(value = "report_member_name")
     private String reportMemberName;
-
-    private LocalDateTime createTime;
-
+    @TableField(value = "create_time")
+    private Date createTime;
+    @TableField(value = "report_object")
     private String reportObject;
-
-    @ApiModelProperty(value = "举报状态：0->未处理；1->已处理")
+    /**
+     * 举报状态：0->未处理；1->已处理
+     */
+    @TableField(value = "report_status")
     private Integer reportStatus;
-
-    @ApiModelProperty(value = "处理结果：0->无效；1->有效；2->恶意")
+    /**
+     * 处理结果：0->无效；1->有效；2->恶意
+     */
+    @TableField(value = "handle_status")
     private Integer handleStatus;
-
+    @TableField(value = "note")
     private String note;
-
-
 }
