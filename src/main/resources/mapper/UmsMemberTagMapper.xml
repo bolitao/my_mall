@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="xyz.bolitao.my_mall.mapper.UmsMemberTagMapper">
-    <resultMap id="BaseResultMap" type="xyz.bolitao.my_mall.entity.UmsMemberTag">
-        <!--@mbg.generated-->
-        <!--@Table ums_member_tag-->
-        <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="finish_order_count" jdbcType="INTEGER" property="finishOrderCount"/>
-        <result column="finish_order_amount" jdbcType="DECIMAL" property="finishOrderAmount"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        <!--@mbg.generated-->
-        id, `name`, finish_order_count, finish_order_amount
-    </sql>
+  <resultMap id="BaseResultMap" type="xyz.bolitao.my_mall.entity.UmsMemberTag">
+    <!--@mbg.generated-->
+    <!--@Table ums_member_tag-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="finish_order_count" jdbcType="INTEGER" property="finishOrderCount" />
+    <result column="finish_order_amount" jdbcType="DECIMAL" property="finishOrderAmount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, finish_order_count, finish_order_amount
+  </sql>
 </mapper>
